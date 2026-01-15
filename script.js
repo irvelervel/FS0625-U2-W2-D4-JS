@@ -90,3 +90,92 @@ pets.splice(1, 1) // dalla posizione 1 rimuove 1 elemento
 pets.slice(0, 1) // restituisce un NUOVO array -> ['hamster']
 pets.slice(0, 2) // restituisce un NUOVO array -> ['hamster', 'micio']
 pets.slice(1, 2) // restituisce un NUOVO array -> ['micio']
+
+// OGGETTI
+// un oggetto è una collezione di coppie chiave:valore
+const person = {
+  age: 18,
+  shoesNumber: 43,
+  height: '180cm',
+}
+
+// una volta che l'oggetto è stato dichiarato, potete accedere alle sue proprietà specificando
+// la CHIAVE
+// la CHIAVE si può specificare con due notazioni:
+// - DOT NOTATION (90% delle volte userete questa!)
+person.height // '180cm',
+person.age // 18
+
+// - SQUARE BRACKET NOTATION (utile quando la proprietà da cercare è salvata in una variabile)
+person['age'] // 18
+
+const z = 'height'
+
+person.z // undefined
+person[z] // '180cm'
+
+person.canDrive = true // ho aggiunto permanentemente una nuova proprietà a person
+
+// CICLI
+// un ciclo rappresenta una molteplice esecuzione di un blocco di codice
+// tipicamente esistono cicli con un numero NON predeterminato di esecuzioni (while) e
+// cicli con un numero predeterminato di esecuzioni (for)
+
+// WHILE
+let numeroEstratto = 0
+let lanci = 0
+
+// Math.random() * 6 // 0.000001 * 6   |   0.9999999 * 6 -> 0.000006 | 5.9999999
+while (numeroEstratto !== 6) {
+  lanci++
+  numeroEstratto = Math.ceil(Math.random() * 6) // 1 | 6
+  console.log('È USCITO ' + numeroEstratto)
+}
+
+console.log(
+  'HO FINITO, È FINALMENTE USCITO 6. HO IMPIEGATO ' + lanci + ' LANCI.'
+)
+
+// FOR
+for (let i = 0; i < 10; i++) {
+  // i vale 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+  console.log('CIAO DAL FOR', i)
+}
+
+// il ciclo FOR è utilizzatissimo per CICLARE GLI ARRAY
+const fiat = ['panda', 'punto', 'stilo', 'multipla']
+
+for (let i = 0; i < fiat.length; i++) {
+  // i è SEMPRE una posizione valida dell'array fiat
+  // i vale: 0, 1, 2, 3
+  // fiat[i] -> vale 'panda' al primo giro, 'punto' al secondo etc.
+  console.log('Sono arrivato alla macchina: ' + fiat[i])
+}
+
+// ARRAY ADVANCED
+fiat.forEach(function (macchina) {
+  // il metodo forEach è una versione sintatticamente più "simpatica" del ciclo for
+  // non richiede inizializzazione dell'indice, punto di arrivo etc.
+  // macchina è un nome che ho scelto io, rappresenterà sempre un ELEMENTO dell'array
+  // (quello che il for chiamava "fiat[i]")
+  // all'interno di questa funzione potete fare con macchina quello che volete
+  console.log(macchina)
+})
+
+const newArray = fiat.map(function (macchina) {
+  return macchina.slice(0, 1)
+})
+// newArray vale ['p', 'p', 's', 'm']
+
+const anotherArray = fiat.map(function (macchina) {
+  return macchina.length
+})
+// anotherArray vale [5, 5, 5, 8]
+
+const macchineConLaP = fiat.filter(function (macchina) {
+  return macchina.slice(0, 1) === 'p'
+})
+// macchineConLaP ora vale ['panda', 'punto']
+
+// FUNZIONI
+// EVENTI
