@@ -178,4 +178,108 @@ const macchineConLaP = fiat.filter(function (macchina) {
 // macchineConLaP ora vale ['panda', 'punto']
 
 // FUNZIONI
+// una funzione è un blocco di codice riutilizzabile.
+
+const myFunc = function () {}
+
+myFunc()
+
+const arrow = () => {
+  // la funzione freccia è in generale un valido sostituto delle funzioni tradizionali
+  // però non possiede al suo interno i collegamenti corretti per le parole "this", "super" e
+  // qualcos'altro
+  // this non esiste nelle funzioni freccia -> viene ereditato dal contesto circostante
+}
+
+arrow()
+
+// le funzioni freccia se sono monoriga e non hanno le graffe, ritornano automaticamente un valore
+
+const normalF = function () {
+  return 'ciao' // 'ciao'
+}
+
+const normalFArrow = () => 'ciao' // ritorno la stringa 'ciao'
+// se la funzione freccia deve solo ritornare un valore, potete farla monoriga, senza graffe
+// e senza parola "return"
+
+const bark = function () {
+  console.log('BAU!')
+}
+
+bark()
+bark()
+bark()
+
+const saluta = function (personName) {
+  console.log('Ciao, ' + personName + '!')
+}
+
+saluta('MARIO')
+saluta('GIULIO')
+saluta('STEFANO')
+
+// personName è il PARAMETRO della funzione
+// 'MARIO', 'GIULIO' e 'STEFANO' sono i dati che vengono passati all'invocazione della funzione
+// sono detti anche ARGOMENTI
+
+const rectArea = function (l1, l2) {
+  console.log(l1 * l2)
+}
+
+rectArea(5, 3)
+rectArea(15, 8)
+
+// voglio fare la somma di due numeri, poi la voglio elevare al quadrato e poi ci voglio sottrarre 5
+
+const faTutto = function (n1, n2) {
+  const sum = n1 + n2
+  const alQuadrato = sum * sum
+  const menoCinque = alQuadrato - 5
+  console.log('il risultato è ' + menoCinque)
+}
+// sarebbe meglio scomporre
+const faLaSomma = function (n1, n2) {
+  const risultato = n1 + n2
+  return risultato
+}
+
+const alQuadrato = function (n) {
+  const risultato = n * n
+  return risultato
+}
+
+const toglieCinque = function (n) {
+  const risultato = n - 5
+  return risultato
+}
+
+// quando ritornate un valore da una funzione, l'esecuzione di quella funzione equivale
+// al suo valore di ritorno
+
+// 5, 6
+const somma = faLaSomma(5, 6) // somma è 11
+const elevato = alQuadrato(somma) // vale 121
+console.log(toglieCinque(elevato))
+
+// sarebbe uguale a...
+toglieCinque(alQuadrato(faLaSomma(5, 6))) // 116
+
 // EVENTI
+// gli eventi sono degli OGGETTI che transitano nel browser a seguito di INTERAZIONI
+const funzione1 = function (e) {
+  console.log('HAI CLICCATO IL BOTTONE', e)
+  // il parametro "e" è un oggetto
+  // questo oggetto sarà pieno di informazioni preziose su cosa sia successo nella pagina
+}
+
+const hover = function (e) {
+  console.log('IL MOUSE È PASSATO SUL BOTTONE', e)
+}
+
+// riferimento all'elemento
+const button = document.querySelector('button')
+console.log(button)
+button.addEventListener('mouseleave', function (e) {
+  console.log('MOUSE ANDATO VIA', e)
+})
